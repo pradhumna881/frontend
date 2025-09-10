@@ -3,11 +3,13 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import AddictionSolutionPage from './pages/AddictionSolutionPage'
+import ScrollToTop from './components/scrolltotop'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   return (
     <Layout>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/solution/:addictionId" element={<AddictionSolutionPage />} />
