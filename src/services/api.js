@@ -1,9 +1,12 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
+// API base URL - UPDATED FOR RENDER BACKEND CONNECTION
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://myrehabcentre-backend.onrender.com'
+
 // Create axios instance
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL + '/api',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
@@ -39,7 +42,7 @@ api.interceptors.response.use(
     }
     
     // Don't show toast for certain endpoints
-    const skipToast = includes(error.response?.status)
+    const skipToast = [404, 401].includes(error.response?.status)
     
     if (!skipToast) {
       toast.error(message)

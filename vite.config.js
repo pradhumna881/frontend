@@ -7,13 +7,7 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
-      }
-    }
+    // REMOVED PROXY - No longer needed for production
   },
   build: {
     target: 'es2015',
@@ -85,5 +79,4 @@ export default defineConfig({
   css: {
     devSourcemap: false
   }
-
 })
